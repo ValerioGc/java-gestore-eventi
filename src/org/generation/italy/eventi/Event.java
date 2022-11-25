@@ -24,7 +24,7 @@ public class Event  {
 
 // Getters & Setters 
 	public String getTitle() {
-		return "\nTitolo: " + title;
+		return "Titolo: " + title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -99,7 +99,6 @@ public class Event  {
 	
 	@Override
 	public String toString() {
-		return "Data: " + getDate() 
-				+  getTitle();
+		return "Data: " + getDate() + " | " + getTitle();
 	}
 }

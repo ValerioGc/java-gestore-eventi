@@ -58,13 +58,13 @@ public class ProgramEvents {
 	}	
 	
 // Stampa programma ordinato per data 
-	public void getOrderedEvents() {
-		List <Event> eventsOrd = new ArrayList<>();
-		
-//		eventsOrd  = events.sort(null);
+	public String getOrderedEvents() {
+		String eventsOrd = getTitle();
+		events.sort((event1, event2) -> event1.getDate().compareTo(event2.getDate()));
 		
 		for (Event event: events) {
-			System.out.println("Data: " + event.getDate() + " - " + event.getTitle());		
+			eventsOrd += "\n" + event.getTitle() + " - " + "Data: " + event.getDate() + "\n";		
 		}
+		return eventsOrd;
 	}	
 }
