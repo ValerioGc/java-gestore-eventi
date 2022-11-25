@@ -23,9 +23,9 @@ public class Main {
 			Event ev1 = new Event(eName, eDate, eSeats);
 			System.out.println(ev1);
 			
-			ProgramEvents programEvents = new ProgramEvents("lista eventi");
-			programEvents.addEvent(ev1);
-			
+//			ProgramEvents pEv = new ProgramEvents("lista eventi");
+//			pEv.addEvent(ev1);
+//			
 		
 			
 		// Gestione Prenotazioni

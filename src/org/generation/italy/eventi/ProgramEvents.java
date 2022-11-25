@@ -7,12 +7,12 @@ import java.util.List;
 public class ProgramEvents {
 	
 	private String title;
-	private static List <Event> events;
+	private List <Event> events;
 	
 
 	public ProgramEvents(String title) {
 		setTitle(title);
-		List <Event> events = new ArrayList<>();
+		this.events = new ArrayList<>();
 	}
 	
 //	Getter & Setters titolo
@@ -50,7 +50,7 @@ public class ProgramEvents {
 		LocalDate dtL = LocalDate.parse(date);
 		
 		for (Event event: events) {
-			if (event.getDate() == dtL) {
+			if (event.getDate().equals(dtL)) {
 				arrL.add(event);				
 			}
 		}
