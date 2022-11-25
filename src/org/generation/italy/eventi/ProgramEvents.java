@@ -7,7 +7,7 @@ import java.util.List;
 public class ProgramEvents {
 	
 	private String title;
-	private List <Event> events;
+	private static List <Event> events;
 	
 
 	public ProgramEvents(String title) {
@@ -61,7 +61,7 @@ public class ProgramEvents {
 	public void getOrderedEvents() {
 		List <Event> eventsOrd = new ArrayList<>();
 		
-		eventsOrd  = events.sort(null);
+//		eventsOrd  = events.sort(null);
 		
 		for (Event event: events) {
 			System.out.println("Data: " + event.getDate() + " - " + event.getTitle());		
