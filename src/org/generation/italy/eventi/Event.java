@@ -62,7 +62,7 @@ public class Event  {
 	public void booking(LocalDate date) throws Exception {
 		if (!date.isAfter(today)) {
 			throw new Exception("L'evento è gia passato");
-		} else if (seats - reservedSeats > 0) {	
+		} else if (checkAvaibleSeats()) {	
 			throw new Exception("Nessun posto disponibile");
 		}
 		reservedSeats++;
@@ -77,9 +77,13 @@ public class Event  {
 		reservedSeats--;
 	}
 	
+	public boolean checkAvaibleSeats() {
+		return ((seats - reservedSeats) > 0);
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "Data: " + getDate() + "Titolo: " + getTitle();
+		return "Data: " + getDate() + " | Titolo: " + getTitle();
 	}
 }
