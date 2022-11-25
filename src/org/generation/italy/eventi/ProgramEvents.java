@@ -1,12 +1,13 @@
 package org.generation.italy.eventi;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramEvents {
 	
 	private String title;
-	private List events;
+	private List <Event> events;
 	
 
 	public ProgramEvents(String title) {
@@ -46,19 +47,23 @@ public class ProgramEvents {
 //	Stampa eventi in data specifica
 	public String getEventsDate(String date) {
 		List <Event> arrL = new ArrayList<>();
-//		
-//		for (Object event: events) {
-//			if (event.getDate() == date) {
-//				arrL.add(event);				
-//			}
-//		}
+		LocalDate dtL = LocalDate.parse(date);
+		
+		for (Event event: events) {
+			if (event.getDate() == dtL) {
+				arrL.add(event);				
+			}
+		}
 		return arrL.toString();
 	}	
 	
 // Stampa programma ordinato per data 
 //	public String getOrderedEvents() {
 //		List <Event> eventsOrd = new ArrayList<>();
-//		
-//		return getTitle() + eventsOrd.toString();
+	
+//		for (Object event: events) {
+//				
+//		}
+//		return eventsOrd.toString() + getTitle();
 //	}	
 }
