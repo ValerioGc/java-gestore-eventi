@@ -64,7 +64,7 @@ public class ProgramEvents {
 		eventsOrd  = events.sort(null);
 		
 		for (Event event: events) {
-			System.out.println(event.getDate() + " " + event.getTitle());		
+			System.out.println("Data: " + event.getDate() + " - " + event.getTitle());		
 		}
 	}	
 }
