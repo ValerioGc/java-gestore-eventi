@@ -11,7 +11,6 @@ public class Event  {
 	
 	LocalDate today = LocalDate.now();
 	private LocalDate date;
-	
 	private int seats;
 	private int reservedSeats = 0;
 
@@ -25,7 +24,6 @@ public class Event  {
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -33,14 +31,13 @@ public class Event  {
 	public LocalDate getDate() {
 		return date;
 	}
-
 	public void setDate(LocalDate date) throws Exception{
-		
 		if (!date.isAfter(today)) {
 			throw new Exception("La data inserita è gia passata");
 		}
 		this.date = date;
 	}
+	
 	
 // Posti a sedere
 	public int setSeats(int seats) throws Exception{
@@ -56,31 +53,43 @@ public class Event  {
 	public int getReservedSeats() {
 		return reservedSeats;
 	}
-
-
+	
+	private boolean checkAvaibleSeats(int reservations) {
+		return (((seats - reservations) < 0) || (seats < reservations));
+	}
+	
+	private boolean checkReservations(int cRes) {
+		return (((reservedSeats - cRes) <= 0) || (reservedSeats < cRes));
+	}
+	
+	public String getTotalSeats() {
+		return "----------------------\n" 
+				+ "Posti: " + getSeats() 
+				+ " | Prenotazioni: " + reservedSeats 
+				+ "\n----------------------------";
+	}
+	
+	
 // Methods prenotazioni
-	public void booking(LocalDate date) throws Exception {
+	public void booking(int reservations) throws Exception {
 		if (!date.isAfter(today)) {
 			throw new Exception("L'evento è gia passato");
-		} else if (checkAvaibleSeats()) {	
-			throw new Exception("Nessun posto disponibile");
-		}
-		reservedSeats++;
+		} else if (checkAvaibleSeats(reservations)) {	
+			throw new Exception("Il numero di posti richiesto non disponibile!" + "\nPosti disponibili: " + seats);
+		} 
+		reservedSeats += reservations;
 	}
 	
-	public void unBooking(LocalDate date) throws Exception {
+	public void unBooking(int reservations) throws Exception {
 		if (!date.isAfter(today)) {
 			throw new Exception("L'evento è gia passato");
-		} else if (reservedSeats == 0) {
-			throw new Exception("Nessuna prenotazione per l'evento");
-		}
-		reservedSeats--;
+		}  else if (checkReservations(reservations)) {	
+			throw new Exception("Numero Prenotazioni da cancellare superiore al numero totale di prenotazioni" + "\nPrenotazioni: " + reservedSeats);
+		} 
+		reservedSeats -= reservations;
 	}
 	
-	public boolean checkAvaibleSeats() {
-		return ((seats - reservedSeats) > 0);
-	}
-	
+
 	
 	@Override
 	public String toString() {
