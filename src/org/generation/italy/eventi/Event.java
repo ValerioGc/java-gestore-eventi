@@ -6,23 +6,25 @@ package org.generation.italy.eventi;
 import java.time.LocalDate;
 
 public class Event  {
+
+	public LocalDate today = LocalDate.now();
 	
 	private String title;
-	
-	LocalDate today = LocalDate.now();
 	private LocalDate date;
 	private int seats;
-	private int reservedSeats = 0;
-
 	
-	public Event(String title, LocalDate date, int seats) throws Exception {
+	private int reservedSeats = 0;
+	
+	
+	public Event(String title, String date, int seats) throws Exception {
 		setTitle(title);
 		setDate(date);
 		setSeats(seats);
 	}
 
+// Getters & Setters 
 	public String getTitle() {
-		return title;
+		return "\nTitolo: " + title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
@@ -31,16 +33,19 @@ public class Event  {
 	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) throws Exception{
-		if (!date.isAfter(today)) {
+	public void setDate(String date) throws Exception{
+		
+		LocalDate dtL = LocalDate.parse(date);
+		
+		if (!dtL.isAfter(today)) {
 			throw new Exception("La data inserita è gia passata");
 		}
-		this.date = date;
+		this.date = dtL;
 	}
 	
 	
 // Posti a sedere
-	public int setSeats(int seats) throws Exception{
+	private int setSeats(int seats) throws Exception{
 		if (seats <= 0) {
 			throw new Exception("Il numero di posti deve essere superiore a 0");
 		}
@@ -55,18 +60,19 @@ public class Event  {
 	}
 	
 	private boolean checkAvaibleSeats(int reservations) {
-		return (((seats - reservations) < 0) || (seats < reservations));
+		return (((seats - reservations) < 0) && (seats < reservations));
 	}
 	
 	private boolean checkReservations(int cRes) {
-		return (((reservedSeats - cRes) <= 0) || (reservedSeats < cRes));
+		return (((reservedSeats - cRes) <= 0) && (reservedSeats < cRes));
 	}
 	
+// Posti totali
 	public String getTotalSeats() {
-		return "----------------------\n" 
+		return "-------------------------------\n" 
 				+ "Posti: " + getSeats() 
 				+ " | Prenotazioni: " + reservedSeats 
-				+ "\n----------------------------";
+				+ "\n-------------------------------";
 	}
 	
 	
@@ -93,6 +99,7 @@ public class Event  {
 	
 	@Override
 	public String toString() {
-		return "Data: " + getDate() + " | Titolo: " + getTitle();
+		return "Data: " + getDate() 
+				+  getTitle();
 	}
 }
