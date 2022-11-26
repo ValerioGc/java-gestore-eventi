@@ -95,7 +95,12 @@ public class Event  {
 		reservedSeats -= reservations;
 	}
 	
-
+// Check unique event
+	public boolean checkUnique(Event ev1, Event ev2) {
+		return ((ev1.getTitle().equals(ev2.getTitle())) 
+				&& (ev1.getTitle().equals(ev2.getTitle())));
+	}
+	
 	
 	@Override
 	public String toString() {
