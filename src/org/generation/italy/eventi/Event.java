@@ -60,7 +60,7 @@ public class Event  {
 	}
 	
 	private boolean checkAvaibleSeats(int reservations) {
-		return (((seats - reservations) > 0) && (seats < reservations));
+		return (((seats - reservations) < 0) && (seats < reservations));
 	}
 	
 	private boolean checkReservations(int cRes) {
