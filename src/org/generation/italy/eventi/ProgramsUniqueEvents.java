@@ -1,7 +1,5 @@
 package org.generation.italy.eventi;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class ProgramsUniqueEvents {
@@ -27,13 +25,31 @@ public class ProgramsUniqueEvents {
 	
 //	Methods milestone 4
 	
-//	restituisce l'evento con il numero massimo di posti totali
-	public int getMaxPostiTotaliEvento() {
-		return events.size();
+
+	public Event getMaxPostiTotaliEvento() {
+		int maxS = Integer.MIN_VALUE;
+		int currS;
+		Event eventMaxS = null;
+		for (Event event: events) {
+			if (event.getSeats() > maxS) {
+				maxS = event.getSeats();
+				eventMaxS = event;
+			}
+		}
+		return eventMaxS;
 	}
-//	restituisce l'evento con il numero minimo di posti totali
-	public int getMinPostiTotaliEvento() {
-		return events.size();
+	
+	public Event getMinPostiTotaliEvento() {
+		int minS = Integer.MIN_VALUE;
+		int currS;
+		Event eventMinS = null;
+		for (Event event: events) {
+			if (event.getSeats() < minS) {
+				minS = event.getSeats();
+				eventMinS = event;
+			}
+		}
+		return eventMinS;
 	}
 	
 //	 stampa tutti gli eventi in ordine di lunghezza del titolo 
