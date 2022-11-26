@@ -2,15 +2,15 @@ package org.generation.italy.eventi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ProgramsUniqueEvents {
 
 	private String title;
-	private List <Event> events;
+	private Set <Event> events;
 	
 	public ProgramsUniqueEvents(String title) {
 		setTitle(title);
-		this.events = new ArrayList<>();
 	}
 
 //  Getter and Setters 
@@ -21,7 +21,7 @@ public class ProgramsUniqueEvents {
 		this.title = title;
 	}
 
-	public List<Event> getEvents() {
+	public Set <Event> getEvents() {
 		return events;
 	}
 	
@@ -38,7 +38,7 @@ public class ProgramsUniqueEvents {
 	
 //	 stampa tutti gli eventi in ordine di lunghezza del titolo 
 //	 (titolo piu' lungo prima
-	public List<Event> orderedPrint() {
+	public Set <Event> orderedPrint() {
 		return events;
 	}
 	
