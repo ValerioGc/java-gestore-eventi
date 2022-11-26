@@ -53,14 +53,14 @@ public class Event  {
 	}
 	public int getSeats() {
 		return seats;
-	}
+	} 
 	
 	public int getReservedSeats() {
 		return reservedSeats;
 	}
 	
 	private boolean checkAvaibleSeats(int reservations) {
-		return (((seats - reservations) < 0) && (seats < reservations));
+		return (((seats - reservations) > 0) && (seats < reservations));
 	}
 	
 	private boolean checkReservations(int cRes) {
